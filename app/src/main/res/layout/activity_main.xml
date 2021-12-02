@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:background="@color/all_might_blue1">
+
+    <EditText
+        android:id="@+id/hero_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/hero_id_placeholder"
+        android:background="@color/all_might_blue2"
+        android:textColor="@color/white"
+        android:textColorHint="#2196F3"/>
+
+    <TextView
+        android:id="@+id/url_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="22sp"
+        android:layout_marginTop="20dp"
+        android:text="@string/url_display_placeholder"
+        android:textColor="@color/white"
+        android:background="@color/all_might_red"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/result_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/result_placeholder"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="5dp"
+            android:textSize="18sp"
+            android:background="@color/all_might_red"
+            android:textColor="@color/all_might_golden"/>
+
+    </ScrollView>
+</LinearLayout>

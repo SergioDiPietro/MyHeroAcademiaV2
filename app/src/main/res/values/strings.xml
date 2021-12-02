@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyHeroAcademiaV2</string>
+    <string name="url_display_placeholder">- API URL here -</string>
+    <string name="hero_id_placeholder">Introduzca el ID de un héroe para mostrar su información (dejar en blanco para mostrar todos los héroes)</string>
+    <string name="result_placeholder">★ Heroes info HERE ★</string>
+    <string name="launch">Launch</string>
+    <string name="clear">Clear</string>
+</resources>
