@@ -27,7 +27,7 @@ public class NetworkUtils {
                 .withAppendedPath(Uri.parse(BASE_URL), SINGLE_HERO_PARAM)
                 .buildUpon().build();
 
-        Uri buildUri2 = Uri.withAppendedPath(buildUri, heroID + URL_END);
+        Uri buildUri2 = Uri.withAppendedPath(buildUri, heroID.trim() + URL_END);
 
         return UriToURL(buildUri2);
     }

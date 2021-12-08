@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     EditText heroIdBox;
     TextView urlDisplay;
     TextView resultDisplay;
+    TextView errorDisplay;
 
     public class HeroesQueryTask extends AsyncTask<URL, Void, String> {
 
@@ -38,9 +40,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            if (s != null && !s.equals("")) {
-                resultDisplay.setText(s);
+        protected void onPostExecute(String resolve) {
+            if (resolve != null && !resolve.equals("") && !resolve.equals(" ")) {
+                showJsonData();
+                resultDisplay.setText(resolve);
+            } else {
+                showErrorMessage();
             }
         }
     }
@@ -49,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
+    }
+
+    private void showJsonData() {
+        errorDisplay.setVisibility(View.INVISIBLE);
+        resultDisplay.setVisibility(View.VISIBLE);
+    }
+
+    private void showErrorMessage() {
+        resultDisplay.setVisibility(View.INVISIBLE);
+        errorDisplay.setVisibility(View.VISIBLE);
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -67,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.clear) {
             urlDisplay.setText("");
             resultDisplay.setText("");
+            showJsonData();
         }
         return true;
     }
@@ -79,5 +95,6 @@ public class MainActivity extends AppCompatActivity {
         heroIdBox = (EditText)findViewById(R.id.hero_id);
         urlDisplay = (TextView) findViewById(R.id.url_display);
         resultDisplay = (TextView) findViewById(R.id.result_display);
+        errorDisplay = (TextView) findViewById(R.id.error_display);
     }
 }

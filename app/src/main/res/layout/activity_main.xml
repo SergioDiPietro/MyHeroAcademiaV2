@@ -50,6 +50,15 @@
             android:textSize="18sp"
             android:background="@color/all_might_red"
             android:textColor="@color/all_might_golden"/>
-
     </ScrollView>
+
+    <TextView
+        android:id="@+id/error_display"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="@string/error_message"
+        android:textColor="@color/white"/>
 </LinearLayout>
