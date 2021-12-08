@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.myheroacademiav2.utils.NetworkUtils;
@@ -22,8 +23,14 @@ public class MainActivity extends AppCompatActivity {
     TextView urlDisplay;
     TextView resultDisplay;
     TextView errorDisplay;
+    ProgressBar loadingDisplay;
 
     public class HeroesQueryTask extends AsyncTask<URL, Void, String> {
+
+        protected void onPreExecute() {
+            loadingDisplay.setVisibility(View.VISIBLE);
+            resultDisplay.setVisibility(View.INVISIBLE);
+        }
 
         @Override
         protected String doInBackground(URL... urls) {
@@ -41,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String resolve) {
+            loadingDisplay.setVisibility(View.INVISIBLE);
+            resultDisplay.setVisibility(View.VISIBLE);
             if (resolve != null && !resolve.equals("") && !resolve.equals(" ")) {
                 showJsonData();
                 resultDisplay.setText(resolve);
@@ -80,8 +89,9 @@ public class MainActivity extends AppCompatActivity {
 
             new HeroesQueryTask().execute(heroesApiUrl);
         } else if (itemId == R.id.clear) {
-            urlDisplay.setText("");
-            resultDisplay.setText("");
+            heroIdBox.setText("");
+            urlDisplay.setText(R.string.url_display_placeholder);
+            resultDisplay.setText(R.string.result_placeholder);
             showJsonData();
         }
         return true;
@@ -96,5 +106,6 @@ public class MainActivity extends AppCompatActivity {
         urlDisplay = (TextView) findViewById(R.id.url_display);
         resultDisplay = (TextView) findViewById(R.id.result_display);
         errorDisplay = (TextView) findViewById(R.id.error_display);
+        loadingDisplay = (ProgressBar) findViewById(R.id.loading_display);
     }
 }

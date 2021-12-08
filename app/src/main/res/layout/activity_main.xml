@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="16dp"
         android:hint="@string/hero_id_placeholder"
         android:background="@color/all_might_blue2"
         android:textColor="@color/white"
@@ -35,30 +36,42 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"/>
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/result_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/result_placeholder"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="5dp"
+                android:textSize="18sp"
+                android:background="@color/all_might_red"
+                android:textColor="@color/all_might_golden"/>
+        </ScrollView>
+
         <TextView
-            android:id="@+id/result_display"
+            android:id="@+id/error_display"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/result_placeholder"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:paddingLeft="5dp"
-            android:textSize="18sp"
-            android:background="@color/all_might_red"
-            android:textColor="@color/all_might_golden"/>
-    </ScrollView>
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:text="@string/error_message"
+            android:textColor="@color/white"/>
 
-    <TextView
-        android:id="@+id/error_display"
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="20sp"
-        android:text="@string/error_message"
-        android:textColor="@color/white"/>
+        <ProgressBar
+            android:id="@+id/loading_display"
+            android:visibility="invisible"
+            android:layout_gravity="center"
+            android:layout_width="54dp"
+            android:layout_height="54dp" />
+    </FrameLayout>
 </LinearLayout>
